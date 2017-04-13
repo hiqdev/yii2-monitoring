@@ -1,0 +1,12 @@
+package:
+    type:           yii2-extension
+    name:           yii2-monitoring
+    title:          Errors and performance monitoring for Yii2 applications
+    headline:       Yii2 Application Monitoring
+    keywords:       yii2, monitoring
+    namespace:      hiqdev\yii2\monitoring
+    description:    |
+        Provides:
+
+        - Notifications for system administrators for uncaught exceptions and other errors
+        - Feedback form for users to leave message for system administrators on the error page
