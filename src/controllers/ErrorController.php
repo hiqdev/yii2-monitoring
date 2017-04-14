@@ -27,18 +27,6 @@ class ErrorController extends Controller
         ];
     }
 
-    public function behaviors()
-    {
-        return [
-            [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'send' => ['post'],
-                ],
-            ],
-        ];
-    }
-
     public function actionSend()
     {
         $form = new FeedbackForm();

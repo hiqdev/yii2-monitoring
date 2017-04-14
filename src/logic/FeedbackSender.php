@@ -8,10 +8,10 @@
  * @copyright Copyright (c) 2016-2017, HiQDev (http://hiqdev.com/)
  */
 
-namespace hiqdev\yii2\errorNotifier\logic;
+namespace hiqdev\yii2\monitoring\logic;
 
-use hiqdev\yii2\errorNotifier\models\FeedbackForm;
-use hiqdev\yii2\errorNotifier\Module;
+use hiqdev\yii2\monitoring\models\FeedbackForm;
+use hiqdev\yii2\monitoring\Module;
 use yii\base\InvalidConfigException;
 use yii\base\Object;
 use yii\mail\MailerInterface;

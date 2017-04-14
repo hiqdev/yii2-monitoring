@@ -11,8 +11,8 @@
 return [
     'adminEmail' => null,
 
-    'monitoring.feedback.subject' => 'Error feedback',
     'monitoring.flag' => 'app',
+    'monitoring.feedback.subject' => 'Error feedback',
     'monitoring.email.subject' => null,
     'monitoring.email.from' => null,
     'monitoring.email.to' => null,

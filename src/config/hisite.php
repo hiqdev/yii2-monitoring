@@ -62,4 +62,15 @@ return array_filter([
             ],
         ],
     ],
+    'container' => [
+        'definitions' => [
+            \hiqdev\yii2\monitoring\logic\FeedbackSender::class => [
+                'class' => \hiqdev\yii2\monitoring\logic\FeedbackSender::class,
+                'view' => '@hiqdev/yii2/monitoring/views/mail/feedback.php',
+                'from' => $params['monitoring.email.from'] ?: $params['adminEmail'],
+                'to' => $params['monitoring.email.to'] ?: $params['adminEmail'],
+                'subject' => $params['monitoring.feedback.subject'],
+            ],
+        ],
+    ],
 ]);

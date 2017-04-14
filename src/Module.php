@@ -84,11 +84,6 @@ class Module extends \yii\base\Module
         return Yii::$app->getModule('monitoring');
     }
 
-    public function getDebugLogLink()
-    {
-        return $url ? "See debug log: $url\n\n" : '';
-    }
-
     public function getDebugUrl($sessionTag = null)
     {
         if (empty($sessionTag)) {

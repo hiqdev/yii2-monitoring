@@ -10,8 +10,8 @@
 
 namespace hiqdev\yii2\monitoring\logic;
 
-use hipanel\helpers\FileHelper;
 use Yii;
+use yii\helpers\FileHelper;
 
 /**
  * Class DebugSessionSaver is designed to save debug session result to a separate
