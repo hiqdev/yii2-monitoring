@@ -25,15 +25,17 @@ return array_filter([
         'log' => [
             'targets' => [
                 'monitoring' => [
-                    'class' => hiqdev\yii2\monitoring\collectors\LogTarget::class,
+                    'class' => hiqdev\yii2\monitoring\targets\RedirectTarget::class,
                     'levels' => ['error'],
-                    'view' => '@hiqdev/yii2/monitoring/views/email/error.php',
-                    'destinations' => ['email'],
+                    'targets' => [
+                        /// 'sentry' => $params['sentry.dsn'], NOT IMPLEMENTED YET
+                        'email'  => $params['monitoring.email.to'],
+                    ],
                 ],
             ],
         ],
     ],
-    'bootstrap' => defined('YII_DEBUG') && YII_DEBUG && empty($params['monitoring.email.from']) ? [
+    'bootstrap' => defined('YII_DEBUG') && YII_DEBUG && empty($params['monitoring.email.to']) ? [
         'yii2-monitoring-warning' => function () {
             Yii::warning('Monitoring is not configured');
         },
@@ -41,22 +43,24 @@ return array_filter([
     'modules' => [
         'monitoring' => [
             'class' => \hiqdev\yii2\monitoring\Module::class,
-            'flagWithDomain' => isset($params['monitoring.flagWithDomain'])
-                ? $params['monitoring.flagWithDomain']
-                : null,
-            'destinations' => [
+            'flagWithDomain' => $params['monitoring.flagWithDomain'],
+            'error' => [
+                'view' => '@hiqdev/yii2/monitoring/views/mail/error.php',
+            ],
+            'feedback' => [
+                'subject' => $params['monitoring.feedback.subject'],
+            ],
+            'targets' => [
                 'email' => array_filter([
-                    'class' => \hiqdev\yii2\monitoring\destinations\EmailDestination::class,
-                    'from' => isset($params['monitoring.email.from'])
-                        ? $params['monitoring.email.from']
-                        : $params['adminEmail'],
-                    'to' => isset($params['monitoring.email.to'])
-                        ? $params['monitoring.email.to']
-                        : $params['adminEmail'],
-                    'subject' => isset($params['monitoring.email.subject'])
-                        ? $params['monitoring.email.subject']
-                        : null,
+                    'class' => \hiqdev\yii2\monitoring\targets\EmailTarget::class,
+                    'from' => $params['monitoring.email.from'] ?: $params['adminEmail'],
+                    'to' => $params['monitoring.email.to'] ?: $params['adminEmail'],
+                    'subject' => $params['monitoring.email.subject'],
                 ]),
+                'sentry' => [
+                    'class' => \hiqdev\yii2\monitoring\targets\SentryTarget::class,
+                    'dsn' => $params['sentry.dsn'],
+                ],
             ],
         ],
     ],

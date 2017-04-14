@@ -8,13 +8,15 @@
  * @copyright Copyright (c) 2016-2017, HiQDev (http://hiqdev.com/)
  */
 
-namespace hiqdev\yii2\monitoring\targets;
+namespace hiqdev\yii2\monitoring\collectors;
 
+use hiqdev\yii2\monitoring\CollectorInterface;
 use hiqdev\yii2\monitoring\models\FeedbackForm;
+use hiqdev\yii2\monitoring\Message;
 use hiqdev\yii2\monitoring\Module;
 use Yii;
 
-class LogTarget extends \yii\log\EmailTarget implements CollectorInterface
+class LogTarget extends \yii\log\Target implements CollectorInterface
 {
     public $destinations = [];
 
@@ -26,9 +28,51 @@ class LogTarget extends \yii\log\EmailTarget implements CollectorInterface
         Module::getInstance()->export($this);
     }
 
+    public function getDestinations()
+    {
+        return $this->destinations;
+    }
+
     public function getMessages()
     {
-        return $this->messages;
+        foreach ($this->messages as $message) {
+            $res[] = $this->prepareMessage($message);
+        }
+
+        return $res;
+    }
+
+    public function prepareMessage($message)
+    {
+        list($text, $level, $category, $timestamp) = $message;
+        $level = Logger::getLevelName($level);
+        if (!is_string($text)) {
+            // exceptions may not be serializable if in the call stack somewhere is a Closure
+            if ($text instanceof \Throwable || $text instanceof \Exception) {
+                $text = (string) $text;
+            } else {
+                $text = VarDumper::export($text);
+            }
+        }
+        $traces = [];
+        if (isset($message[4])) {
+            foreach ($message[4] as $trace) {
+                $traces[] = "in {$trace['file']}:{$trace['line']}";
+            }
+        }
+
+        $data = [
+            'class' => Message::class,
+            'level' => $level,
+            'time' => date('c', $timestamp),
+            'category' => $category,
+            'prefix' => $this->getMessagePrefix($message),
+            'traces' => $traces,
+            'text' => $text,
+        ];
+        var_dump($data);
+
+        return Yii::createObject($data);
     }
 
     public function old()

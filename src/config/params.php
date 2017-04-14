@@ -10,13 +10,12 @@
 
 return [
     'adminEmail' => null,
-    'monitoring' => [
-        'log.subject' => 'Error Log',
-        'feedback.subject' => 'Error feedback',
-        'flagWithDomain' => true,
-        'email' => [
-            'from' => null,
-            'to' => null,
-        ],
-    ],
+
+    'monitoring.feedback.subject' => 'Error feedback',
+    'monitoring.flagWithDomain' => true,
+    'monitoring.email.subject' => null,
+    'monitoring.email.from' => null,
+    'monitoring.email.to' => null,
+
+    'sentry.dsn' => null,
 ];

@@ -38,7 +38,7 @@ class FeedbackForm extends Model
     public function attributeLabels()
     {
         return [
-            'message' => Yii::t('error-notifier', 'Message'),
+            'message' => Yii::t('monitoring', 'Message'),
         ];
     }
 

@@ -11,20 +11,44 @@
 namespace hiqdev\yii2\monitoring;
 
 use Yii;
+use yii\base\InvalidConfigException;
+use yii\log\Logger;
 
 class Module extends \yii\base\Module
 {
+    public $error = [];
+
+    public $feedback = [];
+
+    public $destinations;
+
     public $flagWithDomain;
 
     public function export(CollectorInterface $collector)
     {
-        foreach ($collector->getDestinations() as $dest) {
-            foreach ($collector->getMessages() as $message) {
-                var_dump($dest);
-                var_dump($message);
-                die;
-            }
+        foreach ($collector->getMessages() as $message) {
+            $this->exportMessage($collector->getDestinations(), $message);
         }
+    }
+
+    public function exportMessage($destinations, $message)
+    {
+        foreach ($destinations as $name) {
+            $destination = $this->getDestination($name);
+            $destination->export($message);
+        }
+    }
+
+    public function getDestination($name)
+    {
+        if (empty($this->destinations[$name])) {
+            throw new InvalidConfigException("no monitoring destination $name defined");
+        }
+        if (!is_object($this->destinations[$name])) {
+            $this->destinations[$name] = Yii::createObject($this->destinations[$name]);
+        }
+
+        return $this->destinations[$name];
     }
 
     public function flagEmail($email)
@@ -49,6 +73,38 @@ class Module extends \yii\base\Module
 
     public static function getInstance()
     {
-        return Yii::$app->getModule('error-notifier');
+        return Yii::$app->getModule('monitoring');
+    }
+
+    public function getDebugLogLink()
+    {
+        return $url ? "See debug log: $url\n\n" : '';
+    }
+
+    public function getDebugSessionUrl($sessionTag = null)
+    {
+        if (empty($sessionTag)) {
+            $sessionTag = $this->getDebugSessionTag();
+        }
+
+        return Yii::$app->getUrlManager()->createAbsoluteUrl([
+            '/debug/default/view',
+            'panel' => 'log',
+            'tag' => $sessionTag,
+        ]);
+    }
+
+    public function getDebugSessionTag()
+    {
+        if (!Yii::$app->hasModule('debug')) {
+            return null;
+        }
+
+        return Yii::$app->getModule('debug')->logTarget->tag;
+    }
+
+    public function getView($message)
+    {
+        return $this->error['view'];
     }
 }
