@@ -12,7 +12,7 @@ return [
     'adminEmail' => null,
 
     'monitoring.feedback.subject' => 'Error feedback',
-    'monitoring.flagWithDomain' => true,
+    'monitoring.flag' => 'app',
     'monitoring.email.subject' => null,
     'monitoring.email.from' => null,
     'monitoring.email.to' => null,

@@ -8,15 +8,17 @@
  * @copyright Copyright (c) 2016-2017, HiQDev (http://hiqdev.com/)
  */
 
-namespace hiqdev\yii2\monitoring\destinations;
+namespace hiqdev\yii2\monitoring\targets;
 
 use hiqdev\yii2\monitoring\Module;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\mail\MailerInterface;
 
-class EmailDestination extends \yii\base\Object
+class EmailTarget extends \yii\log\Target
 {
+    public $view;
+
     public $from;
     public $to;
     public $subject;
@@ -32,15 +34,17 @@ class EmailDestination extends \yii\base\Object
         $this->mailer = $mailer;
     }
 
-    public function export($message)
+    public function export()
     {
         $module = Module::getInstance();
 
-        return $this->mailer
-            ->compose($module->getView($message), $module->prepareData($message))
-            ->setTo($this->to)
-            ->setFrom($module->flagEmail($this->from))
-            ->setSubject($module->flagText($this->subject))
-            ->send();
+        foreach ($this->messages as $message) {
+            return $this->mailer
+                ->compose($this->view, $module->prepareMessageData($message, $this))
+                ->setTo($this->to)
+                ->setFrom($module->flagEmail($this->from))
+                ->setSubject($module->prepareSubject($message, $this->subject))
+                ->send();
+        }
     }
 }

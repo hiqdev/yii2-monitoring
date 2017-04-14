@@ -27,10 +27,10 @@ return array_filter([
                 'monitoring' => [
                     'class' => hiqdev\yii2\monitoring\targets\RedirectTarget::class,
                     'levels' => ['error'],
-                    'targets' => [
+                    'targets' => array_keys(array_filter([
                         /// 'sentry' => $params['sentry.dsn'], NOT IMPLEMENTED YET
                         'email'  => $params['monitoring.email.to'],
-                    ],
+                    ])),
                 ],
             ],
         ],
@@ -43,16 +43,14 @@ return array_filter([
     'modules' => [
         'monitoring' => [
             'class' => \hiqdev\yii2\monitoring\Module::class,
-            'flagWithDomain' => $params['monitoring.flagWithDomain'],
-            'error' => [
-                'view' => '@hiqdev/yii2/monitoring/views/mail/error.php',
-            ],
+            'flag' => $params['monitoring.flag'],
             'feedback' => [
                 'subject' => $params['monitoring.feedback.subject'],
             ],
             'targets' => [
                 'email' => array_filter([
                     'class' => \hiqdev\yii2\monitoring\targets\EmailTarget::class,
+                    'view' => '@hiqdev/yii2/monitoring/views/mail/error.php',
                     'from' => $params['monitoring.email.from'] ?: $params['adminEmail'],
                     'to' => $params['monitoring.email.to'] ?: $params['adminEmail'],
                     'subject' => $params['monitoring.email.subject'],
