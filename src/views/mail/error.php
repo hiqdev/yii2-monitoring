@@ -21,12 +21,17 @@ EMAIL: <?= Yii::$app->user->email ?><br>
 
 IP: <?= $request->getUserIp() ?><br>
 AGENT: <?= $request->getUserAgent() ?><br>
-
-level: <?= $level ?><br>
-<?php if (!empty($category)) : ?>
-category: <?= $category ?><br>
-<?php endif ?>
-time: <?= $time ?><br>
 <br>
+
+LEVEL: <?= $level ?><br>
+<?php if (!empty($category)) : ?>
+CATEGORY: <?= $category ?><br>
+<?php endif ?>
+TIME: <?= $time ?><br>
+
+<?php if (isset($debugUrl)) : ?>
+DEBUG: <?= $debugUrl ?><br>
+<br>
+<?php endif ?>
 
 <?= nl2br($text) ?><br>

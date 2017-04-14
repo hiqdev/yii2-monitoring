@@ -89,10 +89,10 @@ class Module extends \yii\base\Module
         return $url ? "See debug log: $url\n\n" : '';
     }
 
-    public function getDebugSessionUrl($sessionTag = null)
+    public function getDebugUrl($sessionTag = null)
     {
         if (empty($sessionTag)) {
-            $sessionTag = $this->getDebugSessionTag();
+            $sessionTag = $this->getDebugTag();
         }
 
         return Yii::$app->getUrlManager()->createAbsoluteUrl([
@@ -102,7 +102,7 @@ class Module extends \yii\base\Module
         ]);
     }
 
-    public function getDebugSessionTag()
+    public function getDebugTag()
     {
         if (!Yii::$app->hasModule('debug')) {
             return null;
@@ -141,6 +141,7 @@ class Module extends \yii\base\Module
             'traces'    => $traces,
             'text'      => $dump,
             'throwable' => $throwable,
+            'debugUrl'  => $this->getDebugUrl(),
         ];
     }
 
