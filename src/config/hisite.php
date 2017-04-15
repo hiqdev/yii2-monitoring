@@ -29,7 +29,7 @@ return array_filter([
                     'levels' => ['error'],
                     'targets' => array_keys(array_filter([
                         /// 'sentry' => $params['sentry.dsn'], NOT IMPLEMENTED YET
-                        'email'  => $params['monitoring.email.to'],
+                        'email'  => YII_ENV==='prod' && $params['monitoring.email.to'],
                     ])),
                 ],
             ],
