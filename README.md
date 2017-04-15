@@ -1,6 +1,6 @@
-# Yii2 Application Monitoring
+# Yii2 Monitoring
 
-**Errors and performance monitoring for Yii2 applications**
+**Health monitoring for Yii2 applications**
 
 [![Latest Stable Version](https://poser.pugx.org/hiqdev/yii2-monitoring/v/stable)](https://packagist.org/packages/hiqdev/yii2-monitoring)
 [![Total Downloads](https://poser.pugx.org/hiqdev/yii2-monitoring/downloads)](https://packagist.org/packages/hiqdev/yii2-monitoring)
@@ -36,4 +36,4 @@ to the require section of your composer.json.
 This project is released under the terms of the BSD-3-Clause [license](LICENSE).
 Read more [here](http://choosealicense.com/licenses/bsd-3-clause).
 
-Copyright © 2016-2017, HiQDev (http://hiqdev.com/)
+Copyright © 2017, HiQDev (http://hiqdev.com/)

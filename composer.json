@@ -1,7 +1,7 @@
 {
     "name": "hiqdev/yii2-monitoring",
     "type": "yii2-extension",
-    "description": "Errors and performance monitoring for Yii2 applications",
+    "description": "Health monitoring for Yii2 applications",
     "keywords": [
         "yii2",
         "monitoring"
