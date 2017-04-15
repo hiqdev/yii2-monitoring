@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @var yii\web\View $this
+ * @var yii\web\View
  * @var yii\web\Request $request
  */
-$request = Yii::$app->request; 
+$request = Yii::$app->request;
 
 ?>
 

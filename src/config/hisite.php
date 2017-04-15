@@ -1,11 +1,11 @@
 <?php
 /**
- * Errors and performance monitoring for Yii2 applications
+ * Health monitoring for Yii2 applications
  *
  * @link      https://github.com/hiqdev/yii2-monitoring
  * @package   yii2-monitoring
  * @license   BSD-3-Clause
- * @copyright Copyright (c) 2016-2017, HiQDev (http://hiqdev.com/)
+ * @copyright Copyright (c) 2017, HiQDev (http://hiqdev.com/)
  */
 
 $env = defined('YII_ENV') ? YII_ENV : 'prod';
@@ -31,7 +31,7 @@ return array_filter([
                     'levels' => ['error'],
                     'targets' => array_keys(array_filter([
                         /// 'sentry' => $params['sentry.dsn'], NOT IMPLEMENTED YET
-                        'email'  => $env==='prod' && $params['monitoring.email.to'],
+                        'email'  => $env === 'prod' && $params['monitoring.email.to'],
                     ])),
                 ],
             ],

@@ -1,11 +1,11 @@
 <?php
 /**
- * Errors and performance monitoring for Yii2 applications
+ * Health monitoring for Yii2 applications
  *
  * @link      https://github.com/hiqdev/yii2-monitoring
  * @package   yii2-monitoring
  * @license   BSD-3-Clause
- * @copyright Copyright (c) 2016-2017, HiQDev (http://hiqdev.com/)
+ * @copyright Copyright (c) 2017, HiQDev (http://hiqdev.com/)
  */
 
 namespace hiqdev\yii2\monitoring\controllers;
@@ -15,7 +15,6 @@ use hiqdev\yii2\monitoring\logic\DebugSessionSaver;
 use hiqdev\yii2\monitoring\logic\FeedbackSender;
 use hiqdev\yii2\monitoring\models\FeedbackForm;
 use Yii;
-use yii\filters\VerbFilter;
 use yii\web\Controller;
 
 class ErrorController extends Controller
