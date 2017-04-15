@@ -8,6 +8,8 @@
  * @copyright Copyright (c) 2016-2017, HiQDev (http://hiqdev.com/)
  */
 
+$env = defined('YII_ENV') ? YII_ENV : 'prod';
+
 return array_filter([
     'components' => [
         'i18n' => [
@@ -29,7 +31,7 @@ return array_filter([
                     'levels' => ['error'],
                     'targets' => array_keys(array_filter([
                         /// 'sentry' => $params['sentry.dsn'], NOT IMPLEMENTED YET
-                        'email'  => YII_ENV==='prod' && $params['monitoring.email.to'],
+                        'email'  => $env==='prod' && $params['monitoring.email.to'],
                     ])),
                 ],
             ],
