@@ -46,9 +46,6 @@ return array_filter([
         'monitoring' => [
             'class' => \hiqdev\yii2\monitoring\Module::class,
             'flag' => $params['monitoring.flag'],
-            'feedback' => [
-                'subject' => $params['monitoring.feedback.subject'],
-            ],
             'targets' => [
                 'email' => array_filter([
                     'class' => \hiqdev\yii2\monitoring\targets\EmailTarget::class,
