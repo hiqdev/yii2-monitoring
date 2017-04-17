@@ -4,16 +4,18 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\web\JsExpression;
 
-/** @var $this yii\web\View */
-/** @var $name string */
-/** @var $message string */
-/** @var $exception Exception */
-/** @var $model \hiqdev\yii2\monitoring\models\FeedbackForm */
+/** @var yii\web\View $this */
+/** @var string $name */
+/** @var string $message */
+/** @var Exception $exception */
+/** @var hiqdev\yii2\monitoring\models\FeedbackForm $model */
 $this->title = $name;
 
 ?>
 
 <div class="site-error">
+
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <div class="alert alert-danger">
         <?= nl2br(Html::encode($message)) ?>
