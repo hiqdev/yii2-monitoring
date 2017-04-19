@@ -11,6 +11,7 @@
 Provides:
 
 - Notifications for system administrators for uncaught exceptions and other errors
+  sent through email or [Sentry]
 - Feedback form for users to leave message for system administrators on the error page
 
 ## Installation
