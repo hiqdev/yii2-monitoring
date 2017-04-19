@@ -1,6 +1,6 @@
 # hiqdev/yii2-monitoring
 
-## [Under development]
+## [0.1.0] - 2017-04-19
 
 - Fixed sending to Sentry ([@hiqsol])
 - Added basics: redone from `hiddev/yii2-error-notifier` ([@hiqsol])
@@ -16,3 +16,4 @@
 [@BladeRoot]: https://github.com/BladeRoot
 [bladeroot@gmail.com]: https://github.com/BladeRoot
 [Under development]: https://github.com/hiqdev/yii2-monitoring/releases
+[0.1.0]: https://github.com/hiqdev/yii2-monitoring/releases/tag/0.1.0

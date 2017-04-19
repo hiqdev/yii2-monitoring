@@ -1,6 +1,6 @@
 # hiqdev/yii2-monitoring
 
-## [Under development]
+## [0.1.0] - 2017-04-19
 
 - Fixed sending to Sentry
     - [7599208] 2017-04-19 removed bootstrap config checker [@hiqsol]
@@ -50,3 +50,4 @@
 [d0fbede]: https://github.com/hiqdev/yii2-monitoring/commit/d0fbede
 [f7bac3a]: https://github.com/hiqdev/yii2-monitoring/commit/f7bac3a
 [7599208]: https://github.com/hiqdev/yii2-monitoring/commit/7599208
+[0.1.0]: https://github.com/hiqdev/yii2-monitoring/releases/tag/0.1.0
