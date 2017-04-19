@@ -2,6 +2,13 @@
 
 ## [Under development]
 
+- Fixed sending to Sentry
+    - [7599208] 2017-04-19 removed bootstrap config checker [@hiqsol]
+    - [148846f] 2017-04-19 docs [@hiqsol]
+    - [04f6d02] 2017-04-19 docs [@hiqsol]
+    - [d9470e4] 2017-04-19 docs [@hiqsol]
+    - [d0fbede] 2017-04-19 docs [@hiqsol]
+    - [f7bac3a] 2017-04-19 fixed sending to sentry [@hiqsol]
 - Added basics: redone from `hiddev/yii2-error-notifier`
     - [ddfac1a] 2017-04-17 added h1 header to error/index page [@hiqsol]
     - [81eb2e5] 2017-04-15 csfixed [@hiqsol]
@@ -37,3 +44,9 @@
 [142127a]: https://github.com/hiqdev/yii2-monitoring/commit/142127a
 [31b0335]: https://github.com/hiqdev/yii2-monitoring/commit/31b0335
 [Under development]: https://github.com/hiqdev/yii2-monitoring/releases
+[148846f]: https://github.com/hiqdev/yii2-monitoring/commit/148846f
+[04f6d02]: https://github.com/hiqdev/yii2-monitoring/commit/04f6d02
+[d9470e4]: https://github.com/hiqdev/yii2-monitoring/commit/d9470e4
+[d0fbede]: https://github.com/hiqdev/yii2-monitoring/commit/d0fbede
+[f7bac3a]: https://github.com/hiqdev/yii2-monitoring/commit/f7bac3a
+[7599208]: https://github.com/hiqdev/yii2-monitoring/commit/7599208

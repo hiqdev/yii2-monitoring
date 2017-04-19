@@ -2,6 +2,7 @@
 
 ## [Under development]
 
+- Fixed sending to Sentry ([@hiqsol])
 - Added basics: redone from `hiddev/yii2-error-notifier` ([@hiqsol])
 
 ## [Development started] - 2017-04-13
