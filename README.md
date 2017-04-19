@@ -15,21 +15,36 @@ Provides:
 
 ## Installation
 
-The preferred way to install this yii2-extension is through [composer](http://getcomposer.org/download/).
-
-Either run
-
-```sh
-php composer.phar require "hiqdev/yii2-monitoring"
-```
-
-or add
+Add to required section of your `composer.json`:
 
 ```json
 "hiqdev/yii2-monitoring": "*"
 ```
 
-to the require section of your composer.json.
+Out of the box this plugin supports used feedback form and
+sending notifications to email.
+
+To enable additional features require:
+
+- [mito/yii2-sentry] - for sending to [Sentry]
+- more later...
+
+[Sentry]:           https://sentry.io/
+[mito/yii2-sentry]: https://github.com/hellowearemito/yii2-sentry
+
+## Configuration
+
+This extension is supposed to be used with [composer-config-plugin].
+
+Else look [src/config/hisite.php] for cofiguration example.
+
+Available configuration parameters:
+
+- `monitoring.email.from`
+- `monitoring.email.to`
+- `sentry.dsn`
+
+[composer-config-plugin]:   https://github.com/hiqdev/composer-config-plugin
 
 ## License
 
