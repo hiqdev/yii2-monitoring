@@ -45,6 +45,7 @@ Available configuration parameters:
 - `sentry.dsn`
 
 [composer-config-plugin]:   https://github.com/hiqdev/composer-config-plugin
+[src/config/hisite.php]:    src/config/hisite.php
 
 ## License
 
