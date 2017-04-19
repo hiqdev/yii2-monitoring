@@ -44,11 +44,6 @@ return array_filter([
             'environment' => $env,
         ]),
     ]),
-    'bootstrap' => $debug && empty($params['monitoring.email.to']) ? [
-        'yii2-monitoring-warning' => function () {
-            Yii::warning('Monitoring is not configured');
-        },
-    ] : null,
     'modules' => [
         'monitoring' => [
             'class' => \hiqdev\yii2\monitoring\Module::class,
