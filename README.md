@@ -12,7 +12,7 @@ Provides:
 
 - Notifications for system administrators for uncaught exceptions and other errors
   sent through email or [Sentry]
-- Feedback form for users to leave message for system administrators on the error page
+- Feedback form on error pages for users could leave message for system administrators
 
 ## Installation
 
