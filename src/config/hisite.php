@@ -9,9 +9,10 @@
  */
 
 $env = defined('YII_ENV') ? YII_ENV : 'prod';
+$debug = defined('YII_DEBUG') && YII_DEBUG;
 
 return array_filter([
-    'components' => [
+    'components' => array_filter([
         'i18n' => [
             'translations' => [
                 'monitoring' => [
@@ -30,14 +31,20 @@ return array_filter([
                     'class' => hiqdev\yii2\monitoring\targets\RedirectTarget::class,
                     'levels' => ['error'],
                     'targets' => array_keys(array_filter([
-                        /// 'sentry' => $params['sentry.dsn'], NOT IMPLEMENTED YET
+                        'sentry' => $params['sentry.dsn'],
                         'email'  => $env === 'prod' && $params['monitoring.email.to'],
                     ])),
                 ],
             ],
         ],
-    ],
-    'bootstrap' => defined('YII_DEBUG') && YII_DEBUG && empty($params['monitoring.email.to']) ? [
+        'sentry' => array_filter([
+            'class' => \mito\sentry\Component::class,
+            'enabled' => $params['sentry.enabled'],
+            'dsn' => $params['sentry.dsn'],
+            'environment' => $env,
+        ]),
+    ]),
+    'bootstrap' => $debug && empty($params['monitoring.email.to']) ? [
         'yii2-monitoring-warning' => function () {
             Yii::warning('Monitoring is not configured');
         },
@@ -55,8 +62,7 @@ return array_filter([
                     'subject' => $params['monitoring.email.subject'],
                 ]),
                 'sentry' => [
-                    'class' => \hiqdev\yii2\monitoring\targets\SentryTarget::class,
-                    'dsn' => $params['sentry.dsn'],
+                    'class' => \mito\sentry\Target::class,
                 ],
             ],
         ],

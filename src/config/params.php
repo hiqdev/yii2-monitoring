@@ -17,5 +17,6 @@ return [
     'monitoring.email.from' => null,
     'monitoring.email.to' => null,
 
-    'sentry.dsn' => null,
+    'sentry.dsn'        => null,
+    'sentry.enabled'    => null,
 ];
