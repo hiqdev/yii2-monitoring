@@ -48,4 +48,9 @@ class RedirectTarget extends \yii\log\Target
     {
         return Module::getInstance();
     }
+
+    protected function getContextMessage()
+    {
+        return '';
+    }
 }
