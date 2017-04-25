@@ -131,7 +131,6 @@ class Module extends \yii\base\Module
             'level'     => Logger::getLevelName($level),
             'time'      => date('c', $timestamp),
             'category'  => $category,
-            // 'prefix'    => $target->getMessagePrefix($message),
             'traces'    => $traces,
             'text'      => $dump,
             'throwable' => $throwable,

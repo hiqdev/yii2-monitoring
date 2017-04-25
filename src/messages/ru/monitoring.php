@@ -26,5 +26,5 @@ return [
     'Contact email: {email}' => 'Контактный email: {email}',
     'Username: {username}' => 'Имя пользователя: {username}',
     'See related debug session log: {url}' => 'Смотрите связанную сессию отладки: {url}',
-    'The link may be invalidated by the GC, but this session is saved to a backup directory. Session tag: {tag}' => 'Ссылка может быть инвалидирована из-за собрщика мусора, но эта сессия была скопирована в резервную директорию. Тег сессии: {tag}',
+    'The link may be invalidated by the GC, but this session is saved to a backup directory. Session tag: {tag}' => 'Ссылка может быть инвалидирована из-за сборщика мусора, но эта сессия была скопирована в резервную директорию. Тег сессии: {tag}',
 ];

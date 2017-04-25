@@ -10,6 +10,7 @@
 
 namespace hiqdev\yii2\monitoring\models;
 
+use hiqdev\yii2\monitoring\Module;
 use Yii;
 use yii\base\Model;
 
@@ -51,16 +52,13 @@ class FeedbackForm extends Model
         ];
     }
 
-    public function getDebugSessionUrl()
+    public function getDebugUrl()
     {
-        if (empty($this->session_tag) || !Yii::$app->hasModule('debug')) {
-            return null;
-        }
+        return $this->getModule()->getDebugUrl($this->session_tag);
+    }
 
-        return Yii::$app->getUrlManager()->createAbsoluteUrl([
-            '/debug/default/view',
-            'panel' => 'log',
-            'tag' => $this->session_tag,
-        ]);
+    public function getModule()
+    {
+        return Module::getInstance();
     }
 }
