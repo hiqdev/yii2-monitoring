@@ -1,37 +1,24 @@
 <?php
 
-/**
- * @var yii\web\View
- * @var yii\web\Request $request
- */
+/** @var yii\web\View $this */
 $request = Yii::$app->request;
 
 ?>
-
-URL: <?= $request->getAbsoluteUrl() ?><br>
-REFERER: <?= $_SERVER['HTTP_REFERER'] ?><br>
-
-<?php if (isset(Yii::$app->user->login)) : ?>
-USER: <?= Yii::$app->user->login ?><br>
-<?php endif ?>
-
-<?php if (isset(Yii::$app->user->email)) : ?>
-EMAIL: <?= Yii::$app->user->email ?><br>
-<?php endif ?>
-
-IP: <?= $request->getUserIp() ?><br>
-AGENT: <?= $request->getUserAgent() ?><br>
+<?= $this->render('_request_data.php') ?>
 <br>
 
+<?php if (!empty($level)) : ?>
 LEVEL: <?= $level ?><br>
+<?php endif ?>
 <?php if (!empty($category)) : ?>
 CATEGORY: <?= $category ?><br>
 <?php endif ?>
+<?php if (!empty($time)) : ?>
 TIME: <?= $time ?><br>
-
+<?php endif ?>
 <?php if (isset($debugUrl)) : ?>
 DEBUG: <?= $debugUrl ?><br>
-<br>
 <?php endif ?>
 
+<br>
 <?= nl2br($text) ?><br>
