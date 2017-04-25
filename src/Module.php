@@ -64,7 +64,7 @@ class Module extends \yii\base\Module
             case self::FLAG_APPLICATION:
                 return Yii::$app->id;
             case self::FLAG_DOMAIN:
-                return Yii::$app->id;
+                return Yii::$app->request->getHostName();
             default:
                 return $flag;
         }
