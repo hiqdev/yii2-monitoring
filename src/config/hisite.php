@@ -8,11 +8,13 @@
  * @copyright Copyright (c) 2017, HiQDev (http://hiqdev.com/)
  */
 
-$env = defined('YII_ENV') ? YII_ENV : 'prod';
-$debug = defined('YII_DEBUG') && YII_DEBUG;
+use hiqdev\yii2\monitoring\logic\FeedbackSender;
 
 return array_filter([
-    'components' => array_filter([
+    'components' => [
+        'errorHandler' => [
+            'errorAction' => 'monitoring/error/index',
+        ],
         'i18n' => [
             'translations' => [
                 'monitoring' => [
@@ -22,50 +24,11 @@ return array_filter([
                 ],
             ],
         ],
-        'errorHandler' => [
-            'errorAction' => 'monitoring/error/index',
-        ],
-        'log' => [
-            'targets' => [
-                'monitoring' => [
-                    'class' => hiqdev\yii2\monitoring\targets\RedirectTarget::class,
-                    'levels' => ['error'],
-                    'targets' => array_keys(array_filter([
-                        'sentry' => $params['sentry.dsn'],
-                        'email'  => $env === 'prod' && $params['monitoring.email.to'],
-                    ])),
-                ],
-            ],
-        ],
-        'sentry' => array_filter([
-            'class' => \mito\sentry\Component::class,
-            'enabled' => $params['sentry.enabled'],
-            'dsn' => $params['sentry.dsn'],
-            'environment' => $env,
-        ]),
-    ]),
-    'modules' => [
-        'monitoring' => [
-            'class' => \hiqdev\yii2\monitoring\Module::class,
-            'flag' => $params['monitoring.flag'],
-            'targets' => [
-                'email' => array_filter([
-                    'class' => \hiqdev\yii2\monitoring\targets\EmailTarget::class,
-                    'view' => '@hiqdev/yii2/monitoring/views/mail/error.php',
-                    'from' => $params['monitoring.email.from'] ?: $params['adminEmail'],
-                    'to' => $params['monitoring.email.to'] ?: $params['adminEmail'],
-                    'subject' => $params['monitoring.email.subject'],
-                ]),
-                'sentry' => [
-                    'class' => \mito\sentry\Target::class,
-                ],
-            ],
-        ],
     ],
     'container' => [
         'definitions' => [
-            \hiqdev\yii2\monitoring\logic\FeedbackSender::class => [
-                'class' => \hiqdev\yii2\monitoring\logic\FeedbackSender::class,
+            FeedbackSender::class => [
+                'class' => FeedbackSender::class,
                 'view' => '@hiqdev/yii2/monitoring/views/mail/feedback.php',
                 'from' => $params['monitoring.email.from'] ?: $params['adminEmail'],
                 'to' => $params['monitoring.email.to'] ?: $params['adminEmail'],
