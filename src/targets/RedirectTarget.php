@@ -11,9 +11,10 @@
 namespace hiqdev\yii2\monitoring\targets;
 
 use hiqdev\yii2\monitoring\Module;
+use yii\log\Target;
 
 /**
- * RedirectTarget redierects output to listed targets.
+ * RedirectTarget redirects output to listed targets.
  */
 class RedirectTarget extends \yii\log\Target
 {
@@ -39,6 +40,10 @@ class RedirectTarget extends \yii\log\Target
         }
     }
 
+    /**
+     * @param $name
+     * @return Target
+     */
     public function getTarget($name)
     {
         return $this->getModule()->getTarget($name);

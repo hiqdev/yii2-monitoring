@@ -17,12 +17,22 @@ use yii\log\Logger;
 
 class Module extends \yii\base\Module
 {
+    const FLAG_APPLICATION = 'app';
+    const FLAG_DOMAIN = 'domain';
+
     public $error = [];
 
     public $feedback = [];
 
     public $targets;
 
+    /**
+     * @var string Flag that will be prepended to the message title
+     * Special values that will be processed in a special way:
+     *  - `hiqdev\yii2\monitoring\Module::FLAG_APPLICATION` - will prefix `Yii::$app->id`
+     *  - `hiqdev\yii2\monitoring\Module::FLAG_DOMAIN` - will prefix `Yii::$app->request->getHostName()`
+     *
+     */
     public $flag;
 
     public function getTarget($name)
@@ -50,12 +60,13 @@ class Module extends \yii\base\Module
 
     public function detectFlagText($flag)
     {
-        if ($flag === 'app') {
-            return Yii::$app->id;
-        } elseif ($flag === 'domain') {
-            return Yii::$app->request->getHostName();
-        } else {
-            return $flag;
+        switch ($flag) {
+            case self::FLAG_APPLICATION:
+                return Yii::$app->id;
+            case self::FLAG_DOMAIN:
+                return Yii::$app->id;
+            default:
+                return $flag;
         }
     }
 
