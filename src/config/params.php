@@ -11,7 +11,7 @@
 return [
     'adminEmail' => null,
 
-    'monitoring.flag' => 'app',
+    'monitoring.flag' => \hiqdev\yii2\monitoring\Module::FLAG_APPLICATION,
     'monitoring.feedback.subject' => 'Error feedback',
     'monitoring.email.subject' => null,
     'monitoring.email.from' => null,
