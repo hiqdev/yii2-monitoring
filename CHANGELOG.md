@@ -1,5 +1,10 @@
 # hiqdev/yii2-monitoring
 
+## [0.2.0] - 2017-05-05
+
+- Renamed config `web` <- hisite ([@hiqsol])
+- Fixed minor issues ([@SilverFire], [@hiqsol])
+
 ## [0.1.0] - 2017-04-19
 
 - Fixed sending to Sentry ([@hiqsol])
@@ -15,5 +20,6 @@
 [andreyklochok@gmail.com]: https://github.com/tafid
 [@BladeRoot]: https://github.com/BladeRoot
 [bladeroot@gmail.com]: https://github.com/BladeRoot
-[Under development]: https://github.com/hiqdev/yii2-monitoring/releases
+[Under development]: https://github.com/hiqdev/yii2-monitoring/compare/0.1.0...HEAD
 [0.1.0]: https://github.com/hiqdev/yii2-monitoring/releases/tag/0.1.0
+[0.2.0]: https://github.com/hiqdev/yii2-monitoring/compare/0.1.0...0.2.0

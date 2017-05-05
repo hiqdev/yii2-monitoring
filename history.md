@@ -1,5 +1,23 @@
 # hiqdev/yii2-monitoring
 
+## [0.2.0] - 2017-05-05
+
+- Renamed config `web` <- hisite
+    - [977b466] 2017-05-05 renamed config `web` <- hisite [@hiqsol]
+    - [59a613a] 2017-05-05 csfixed [@hiqsol]
+    - [996b633] 2017-05-05 renamed `hidev.yml` <- .hidev/config.yml [@hiqsol]
+    - [34b5801] 2017-04-25 fixed yii2 require condition [@hiqsol]
+    - [a146ddc] 2017-04-25 + require yii2 [@hiqsol]
+    - [028ee3a] 2017-04-25 fixed typo [@hiqsol]
+    - [554b307] 2017-04-25 splitted config into common and hisite [@hiqsol]
+- Fixed minor issues
+    - [6a75417] 2017-04-25 Updated params.php [@SilverFire]
+    - [c9cdc9d] 2017-04-25 Enhanced PHPDocs, minor refactoring [@SilverFire]
+    - [e0fa86a] 2017-04-25 minor fixes [@hiqsol]
+    - [c9ecbfe] 2017-04-25 split out `_request_data` view [@hiqsol]
+    - [2a97e5c] 2017-04-19 fixed language file [@hiqsol]
+    - [ea577c8] 2017-04-19 fixed RedirectMessage prevented sending context message [@hiqsol]
+
 ## [0.1.0] - 2017-04-19
 
 - Fixed sending to Sentry
@@ -43,7 +61,7 @@
 [8ba4fd8]: https://github.com/hiqdev/yii2-monitoring/commit/8ba4fd8
 [142127a]: https://github.com/hiqdev/yii2-monitoring/commit/142127a
 [31b0335]: https://github.com/hiqdev/yii2-monitoring/commit/31b0335
-[Under development]: https://github.com/hiqdev/yii2-monitoring/releases
+[Under development]: https://github.com/hiqdev/yii2-monitoring/compare/0.1.0...HEAD
 [148846f]: https://github.com/hiqdev/yii2-monitoring/commit/148846f
 [04f6d02]: https://github.com/hiqdev/yii2-monitoring/commit/04f6d02
 [d9470e4]: https://github.com/hiqdev/yii2-monitoring/commit/d9470e4
@@ -51,3 +69,17 @@
 [f7bac3a]: https://github.com/hiqdev/yii2-monitoring/commit/f7bac3a
 [7599208]: https://github.com/hiqdev/yii2-monitoring/commit/7599208
 [0.1.0]: https://github.com/hiqdev/yii2-monitoring/releases/tag/0.1.0
+[977b466]: https://github.com/hiqdev/yii2-monitoring/commit/977b466
+[59a613a]: https://github.com/hiqdev/yii2-monitoring/commit/59a613a
+[996b633]: https://github.com/hiqdev/yii2-monitoring/commit/996b633
+[34b5801]: https://github.com/hiqdev/yii2-monitoring/commit/34b5801
+[a146ddc]: https://github.com/hiqdev/yii2-monitoring/commit/a146ddc
+[028ee3a]: https://github.com/hiqdev/yii2-monitoring/commit/028ee3a
+[554b307]: https://github.com/hiqdev/yii2-monitoring/commit/554b307
+[6a75417]: https://github.com/hiqdev/yii2-monitoring/commit/6a75417
+[c9cdc9d]: https://github.com/hiqdev/yii2-monitoring/commit/c9cdc9d
+[e0fa86a]: https://github.com/hiqdev/yii2-monitoring/commit/e0fa86a
+[c9ecbfe]: https://github.com/hiqdev/yii2-monitoring/commit/c9ecbfe
+[2a97e5c]: https://github.com/hiqdev/yii2-monitoring/commit/2a97e5c
+[ea577c8]: https://github.com/hiqdev/yii2-monitoring/commit/ea577c8
+[0.2.0]: https://github.com/hiqdev/yii2-monitoring/compare/0.1.0...0.2.0
