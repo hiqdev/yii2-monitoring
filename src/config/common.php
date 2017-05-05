@@ -1,6 +1,6 @@
 <?php
 /**
- * Health monitoring for Yii2 applications
+ * Health monitoring for Yii2 applications.
  *
  * @link      https://github.com/hiqdev/yii2-monitoring
  * @package   yii2-monitoring
@@ -51,4 +51,3 @@ return array_filter([
         ],
     ],
 ]);
-

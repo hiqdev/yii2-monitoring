@@ -15,6 +15,8 @@ Provides:
   sent through email or [Sentry]
 - Feedback form on error pages for users could leave message for system administrators
 
+[sentry]: https://sentry.io/
+
 ## Installation
 
 Add to required section of your `composer.json`:

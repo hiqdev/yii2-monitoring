@@ -1,6 +1,6 @@
 <?php
 /**
- * Health monitoring for Yii2 applications
+ * Health monitoring for Yii2 applications.
  *
  * @link      https://github.com/hiqdev/yii2-monitoring
  * @package   yii2-monitoring
@@ -31,7 +31,6 @@ class Module extends \yii\base\Module
      * Special values that will be processed in a special way:
      *  - `hiqdev\yii2\monitoring\Module::FLAG_APPLICATION` - will prefix `Yii::$app->id`
      *  - `hiqdev\yii2\monitoring\Module::FLAG_DOMAIN` - will prefix `Yii::$app->request->getHostName()`
-     *
      */
     public $flag;
 
