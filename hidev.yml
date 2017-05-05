@@ -4,10 +4,11 @@ package:
     title:          Health monitoring for Yii2 applications
     headline:       Yii2 Monitoring
     keywords:       yii2, monitoring
-    namespace:      hiqdev\yii2\monitoring
     description:    |
         Provides:
 
         - Notifications for system administrators for uncaught exceptions and other errors
           sent through email or [Sentry]
         - Feedback form on error pages for users could leave message for system administrators
+
+        [sentry]: https://sentry.io/
