@@ -25,12 +25,12 @@ return array_filter([
                 ],
             ],
         ],
-        'sentry' => array_filter([
-            'class' => \mito\sentry\Component::class,
-            'enabled' => $params['sentry.enabled'],
-            'dsn' => $params['sentry.dsn'],
-            'environment' => $env,
-        ]),
+        'sentry' => [
+            'class'         => \mito\sentry\Component::class,
+            'enabled'       => $params['sentry.enabled'],
+            'dsn'           => $params['sentry.dsn'],
+            'environment'   => $params['sentry.environment'],
+        ],
     ]),
     'modules' => [
         'monitoring' => [
