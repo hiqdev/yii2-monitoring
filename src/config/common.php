@@ -19,7 +19,7 @@ return array_filter([
                     'class' => hiqdev\yii2\monitoring\targets\RedirectTarget::class,
                     'levels' => ['error'],
                     'targets' => array_keys(array_filter([
-                        'sentry' => $params['sentry.dsn'],
+                        'sentry' => $params['sentry.dsn'] && $params['sentry.enabled'],
                         'email'  => $env === 'prod' && $params['monitoring.email.to'],
                     ])),
                 ],
