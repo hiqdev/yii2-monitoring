@@ -10,7 +10,7 @@
 
 $env = defined('YII_ENV') ? YII_ENV : 'prod';
 
-$defaults = [
+return [
     'adminEmail'                    => null,
 
     'monitoring.flag'               => \hiqdev\yii2\monitoring\Module::FLAG_APPLICATION,
@@ -23,11 +23,3 @@ $defaults = [
     'sentry.enabled'                => $env === 'prod',
     'sentry.environment'            => $env,
 ];
-
-$params = [];
-foreach ($defaults as $key => $default) {
-    $envKey = strtoupper(strtr($key, '.', '_'));
-    $params[$key] = isset($_ENV[$envKey]) ? $_ENV[$envKey] : $default;
-}
-
-return $params;
