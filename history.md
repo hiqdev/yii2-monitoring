@@ -1,5 +1,13 @@
 # hiqdev/yii2-monitoring
 
+## [0.2.1] - 2017-10-10
+
+- Improved default configuration a bit
+    - [c746df2] 2017-10-10 csfixed [@hiqsol]
+    - [ab7ed2b] 2017-10-10 removed manual ENV mixing, moving to composer-config-plugin [@hiqsol]
+    - [4909683] 2017-09-28 fixed configuration [@hiqsol]
+    - [43aeed3] 2017-09-27 improved building configuration [@hiqsol]
+
 ## [0.2.0] - 2017-05-05
 
 - Renamed config `web` <- hisite
@@ -61,7 +69,7 @@
 [8ba4fd8]: https://github.com/hiqdev/yii2-monitoring/commit/8ba4fd8
 [142127a]: https://github.com/hiqdev/yii2-monitoring/commit/142127a
 [31b0335]: https://github.com/hiqdev/yii2-monitoring/commit/31b0335
-[Under development]: https://github.com/hiqdev/yii2-monitoring/compare/0.1.0...HEAD
+[Under development]: https://github.com/hiqdev/yii2-monitoring/compare/0.2.0...HEAD
 [148846f]: https://github.com/hiqdev/yii2-monitoring/commit/148846f
 [04f6d02]: https://github.com/hiqdev/yii2-monitoring/commit/04f6d02
 [d9470e4]: https://github.com/hiqdev/yii2-monitoring/commit/d9470e4
@@ -83,3 +91,8 @@
 [2a97e5c]: https://github.com/hiqdev/yii2-monitoring/commit/2a97e5c
 [ea577c8]: https://github.com/hiqdev/yii2-monitoring/commit/ea577c8
 [0.2.0]: https://github.com/hiqdev/yii2-monitoring/compare/0.1.0...0.2.0
+[c746df2]: https://github.com/hiqdev/yii2-monitoring/commit/c746df2
+[ab7ed2b]: https://github.com/hiqdev/yii2-monitoring/commit/ab7ed2b
+[4909683]: https://github.com/hiqdev/yii2-monitoring/commit/4909683
+[43aeed3]: https://github.com/hiqdev/yii2-monitoring/commit/43aeed3
+[0.2.1]: https://github.com/hiqdev/yii2-monitoring/compare/0.2.0...0.2.1

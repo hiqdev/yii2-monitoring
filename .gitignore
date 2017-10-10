@@ -3,7 +3,15 @@
 .hidev/composer.lock
 .hidev/runtime
 .hidev/vendor
+/.hidev/composer.json
+/.hidev/composer.lock
+/.hidev/runtime
+/.hidev/vendor
 hidev-local.yml
+
+# local config
+/.env
+/hidev-local.yml
 
 # IDE & OS files
 .*.swp
