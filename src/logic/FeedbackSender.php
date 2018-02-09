@@ -12,14 +12,14 @@ namespace hiqdev\yii2\monitoring\logic;
 
 use hiqdev\yii2\monitoring\models\FeedbackForm;
 use hiqdev\yii2\monitoring\Module;
+use yii\base\BaseObject;
 use yii\base\InvalidConfigException;
-use yii\base\Object;
 use yii\mail\MailerInterface;
 
 /**
  * Class FeedbackSender provides API to send send user feedback to the system administrators.
  */
-class FeedbackSender extends Object
+class FeedbackSender extends BaseObject
 {
     /**
      * @var FeedbackForm
