@@ -39,7 +39,7 @@ return array_filter([
             'targets' => [
                 'email' => array_filter([
                     'class' => \hiqdev\yii2\monitoring\targets\EmailTarget::class,
-                    'view' => '@hiqdev/yii2/monitoring/views/mail/error.php',
+                    'view' => dirname(__DIR__) . '/src/views/mail/error.php',
                     'from' => $params['monitoring.email.from'] ?: $params['adminEmail'],
                     'to' => $params['monitoring.email.to'] ?: $params['adminEmail'],
                     'subject' => $params['monitoring.email.subject'],
