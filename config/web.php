@@ -19,7 +19,7 @@ return array_filter([
             'translations' => [
                 'monitoring' => [
                     'class' => \yii\i18n\PhpMessageSource::class,
-                    'basePath' => '@hiqdev/yii2/monitoring/messages',
+                    'basePath' => dirname(__DIR__) . '/src/messages',
                     'sourceLanguage' => 'en-US',
                 ],
             ],
@@ -29,7 +29,7 @@ return array_filter([
         'definitions' => [
             FeedbackSender::class => [
                 'class' => FeedbackSender::class,
-                'view' => '@hiqdev/yii2/monitoring/views/mail/feedback.php',
+                'view' => dirname(__DIR__) . '/src/views/mail/feedback.php',
                 'from' => $params['monitoring.email.from'] ?: $params['adminEmail'],
                 'to' => $params['monitoring.email.to'] ?: $params['adminEmail'],
                 'subject' => $params['monitoring.feedback.subject'],
