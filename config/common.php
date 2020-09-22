@@ -8,15 +8,29 @@
  * @copyright Copyright (c) 2017, HiQDev (http://hiqdev.com/)
  */
 
+use hiqdev\yii2\monitoring\Module;
+use hiqdev\yii2\monitoring\Component;
+use hiqdev\yii2\monitoring\targets\EmailTarget;
+use hiqdev\yii2\monitoring\targets\RedirectTarget;
+use hiqdev\yii2\monitoring\targets\SentryTarget;
+
 $env = defined('YII_ENV') ? YII_ENV : 'prod';
 $debug = defined('YII_DEBUG') && YII_DEBUG;
 
 return array_filter([
+    'bootstrap' => [
+        'monitoring' => 'monitoring',
+    ],
+    'container' => [
+        'singletons' => [
+            \Sentry\State\HubInterface::class => fn () => \Sentry\SentrySdk::getCurrentHub(),
+        ],
+    ],
     'components' => array_filter([
         'log' => [
             'targets' => [
                 'monitoring' => [
-                    'class' => hiqdev\yii2\monitoring\targets\RedirectTarget::class,
+                    '__class' => RedirectTarget::class,
                     'levels' => ['error'],
                     'targets' => array_keys(array_filter([
                         'sentry' => $params['sentry.dsn'] && $params['sentry.enabled'],
@@ -25,27 +39,24 @@ return array_filter([
                 ],
             ],
         ],
-        'sentry' => [
-            'class'         => \mito\sentry\Component::class,
-            'enabled'       => $params['sentry.enabled'],
-            'dsn'           => $params['sentry.dsn'],
-            'environment'   => $params['sentry.environment'],
+        'monitoring' => [
+            '__class' => Component::class,
         ],
     ]),
     'modules' => [
         'monitoring' => [
-            'class' => \hiqdev\yii2\monitoring\Module::class,
+            '__class' => Module::class,
             'flag' => $params['monitoring.flag'],
             'targets' => [
                 'email' => array_filter([
-                    'class' => \hiqdev\yii2\monitoring\targets\EmailTarget::class,
+                    '__class' => EmailTarget::class,
                     'view' => dirname(__DIR__) . '/src/views/mail/error.php',
                     'from' => $params['monitoring.email.from'] ?: $params['adminEmail'],
                     'to' => $params['monitoring.email.to'] ?: $params['adminEmail'],
                     'subject' => $params['monitoring.email.subject'],
                 ]),
                 'sentry' => [
-                    'class' => \mito\sentry\Target::class,
+                    '__class' => SentryTarget::class,
                 ],
             ],
         ],
