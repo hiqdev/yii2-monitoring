@@ -17,9 +17,13 @@ class Component extends \yii\base\Component
 {
     public function init()
     {
+        if (!class_exists(SentrySdk::class)) {
+            return;
+        }
         if (!empty(SentrySdk::getCurrentHub()->getClient())) {
             return;
         }
+
         $params = Yii::$app->params;
         if (empty($params['sentry.dsn']) || empty($params['sentry.enabled'])) {
             return;
