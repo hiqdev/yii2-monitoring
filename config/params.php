@@ -20,6 +20,6 @@ return [
     'monitoring.email.to'           => null,
 
     'sentry.dsn'                    => null,
-    'sentry.enabled'                => $env === 'prod',
+    'sentry.enabled'                => true,
     'sentry.environment'            => $env,
 ];
