@@ -29,7 +29,7 @@ return array_filter([
         'definitions' => [
             FeedbackSender::class => [
                 'class' => FeedbackSender::class,
-                'view' => dirname(__DIR__) . '/src/views/mail/feedback.php',
+                'view' => '@vendor/hiqdev/yii2-monitoring/src/views/mail/feedback.php',
                 'from' => $params['monitoring.email.from'] ?: $params['adminEmail'],
                 'to' => $params['monitoring.email.to'] ?: $params['adminEmail'],
                 'subject' => $params['monitoring.feedback.subject'],

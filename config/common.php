@@ -50,7 +50,7 @@ return array_filter([
             'targets' => [
                 'email' => array_filter([
                     '__class' => EmailTarget::class,
-                    'view' => dirname(__DIR__) . '/src/views/mail/error.php',
+                    'view' => '@vendor/hiqdev/yii2-monitoring/src/views/mail/error.php',
                     'from' => $params['monitoring.email.from'] ?: $params['adminEmail'],
                     'to' => $params['monitoring.email.to'] ?: $params['adminEmail'],
                     'subject' => $params['monitoring.email.subject'],
