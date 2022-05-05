@@ -29,6 +29,9 @@ class Component extends \yii\base\Component
             return;
         }
 
-        \Sentry\init(['dsn' => $params['sentry.dsn']]);
+        \Sentry\init([
+            'dsn' => $params['sentry.dsn'],
+            'error_types' => E_ALL,
+        ]);
     }
 }
