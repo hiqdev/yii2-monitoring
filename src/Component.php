@@ -52,7 +52,11 @@ class Component extends \yii\base\Component
         // We do not want to report insignificant errors to New Relic
         ini_set('newrelic.error_collector.ignore_errors', E_DEPRECATED | E_STRICT | E_NOTICE | E_WARNING);
         newrelic_capture_params();
-        newrelic_name_transaction(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+        if (php_sapi_name() === 'cli') {
+            newrelic_name_transaction($_SERVER['argv']);
+        } else {
+            newrelic_name_transaction(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+        }
 
         // When user is authenticated, add user info
         if (Yii::$app->has('user')) {
