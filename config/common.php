@@ -41,6 +41,9 @@ return array_filter([
                 'sentry' => [
                     '__class' => SentryTarget::class,
                     'levels' => ['error', 'warning'],
+                    'except' => [
+                        'yii\debug\Module::checkAccess',
+                    ]
                 ]
             ],
         ],
