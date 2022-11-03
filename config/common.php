@@ -13,13 +13,14 @@ use hiqdev\yii2\monitoring\Component;
 use hiqdev\yii2\monitoring\targets\EmailTarget;
 use hiqdev\yii2\monitoring\targets\RedirectTarget;
 use hiqdev\yii2\monitoring\targets\SentryTarget;
+use Yiisoft\Composer\Config\Merger\Modifier\InsertValueBeforeKey;
 
 $env = defined('YII_ENV') ? YII_ENV : 'prod';
 $debug = defined('YII_DEBUG') && YII_DEBUG;
 
 return array_filter([
     'bootstrap' => [
-        'monitoring' => 'monitoring',
+        'monitoring' => new InsertValueBeforeKey('monitoring', 'log'),
     ],
     'container' => [
         'singletons' => [
@@ -37,6 +38,10 @@ return array_filter([
                         'email'  => $env === 'prod' && $params['monitoring.email.to'],
                     ])),
                 ],
+                'sentry' => [
+                    '__class' => SentryTarget::class,
+                    'levels' => ['error', 'warning'],
+                ]
             ],
         ],
         'monitoring' => [

@@ -48,6 +48,9 @@
         "hiqdev/hidev-php": "<2.0",
         "hiqdev/hidev-hiqdev": "<2.0"
     },
+    "suggest": {
+        "sentry/sdk": "Sentry ^3.3.0 for error reporting"
+    },
     "autoload": {
         "psr-4": {
             "hiqdev\\yii2\\monitoring\\": "src"

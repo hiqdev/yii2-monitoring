@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace hiqdev\yii2\monitoring\targets;
 
+use Sentry\Event;
+use Sentry\EventHint;
 use Sentry\Severity;
 use Sentry\State\HubInterface;
 use Sentry\State\Scope;
@@ -44,25 +46,26 @@ class SentryTarget extends Target
         foreach ($this->messages as $message) {
             [$msg, $level, $category] = $message;
 
-            $payload = [
-                'level' => $this->getLogLevel($level),
-                'logger' => 'monolog.' . $category,
-            ];
+            $event = Event::createEvent();
+            $event->setLevel($this->getLogLevel($level));
+            $event->setLogger('monolog.' . $category);
+
+            $hint = new EventHint();
 
             if (is_array($msg)) {
                 if (isset($msg['message'])) {
-                    $payload['message'] = $msg['message'];
+                    $event->setMessage($msg['message']);
                     unset($msg['message']);
                 }
                 if (isset($msg['exception']) && $msg['exception'] instanceof Throwable) {
-                    $payload['exception'] = $msg['exception'];
+                    $hint->exception = $msg['exception'];
                     unset($msg['exception']);
                 }
             } else if (is_string($msg)) {
-                $payload['message'] = $msg;
+                $event->setMessage($msg);
             }
 
-            $this->hub->withScope(function (Scope $scope) use ($msg, $payload): void {
+            $this->hub->withScope(function (Scope $scope) use ($msg, $event, $hint): void {
                 if (is_array($msg)) {
                     foreach ($msg as $key => $value) {
                         $scope->setExtra((string) $key, $value);
@@ -70,7 +73,7 @@ class SentryTarget extends Target
                 }
 
                 $this->enrichWithUserData($scope);
-                $this->hub->captureEvent($payload);
+                $this->hub->captureEvent($event, $hint);
             });
         }
     }
