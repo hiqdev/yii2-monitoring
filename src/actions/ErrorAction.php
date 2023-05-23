@@ -26,7 +26,7 @@ class ErrorAction extends \yii\web\ErrorAction
     {
         $model = new FeedbackForm();
 
-        if (Yii::$app->hasModule('debug')) {
+        if (!defined('HISITE_TEST') && Yii::$app->hasModule('debug')) {
             /** @var \yii\debug\Module $debug */
             $debug = Yii::$app->getModule('debug');
             $model->session_tag = $debug->logTarget->tag;
