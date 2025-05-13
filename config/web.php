@@ -8,9 +8,13 @@
  * @copyright Copyright (c) 2017, HiQDev (http://hiqdev.com/)
  */
 
+use hiqdev\yii2\monitoring\bootstrap\SentryUserFeedbackBootstrap;
 use hiqdev\yii2\monitoring\logic\FeedbackSender;
 
 return array_filter([
+    'bootstrap' => [
+        SentryUserFeedbackBootstrap::class,
+    ],
     'components' => [
         'errorHandler' => [
             'errorAction' => 'monitoring/error/index',
