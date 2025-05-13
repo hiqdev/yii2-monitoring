@@ -20,6 +20,7 @@ return [
     'monitoring.email.to'           => null,
 
     'sentry.dsn'                    => null,
+    'sentry.loader.script'          => null,
     'sentry.enabled'                => true,
     'sentry.environment'            => $env,
 ];
