@@ -84,6 +84,9 @@
         "allow-plugins": {
             "yiisoft/yii2-composer": true,
             "yiisoft/composer-config-plugin": true
+        },
+        "platform": {
+            "php": "7.4.33"
         }
     }
 }

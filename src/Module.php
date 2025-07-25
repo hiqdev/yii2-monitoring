@@ -171,7 +171,7 @@ class Module extends \yii\base\Module
         }
     }
 
-    private function formatTimestamp(int|float $timestamp): string
+    private function formatTimestamp($timestamp): string
     {
         if (is_int($timestamp)) {
             return date('c', $timestamp);
