@@ -1,15 +1,20 @@
 <?php
-/**
- * Health monitoring for Yii2 applications
- *
- * @link      https://github.com/hiqdev/yii2-monitoring
- * @package   yii2-monitoring
- * @license   BSD-3-Clause
- * @copyright Copyright (c) 2017, HiQDev (http://hiqdev.com/)
- */
 
-error_reporting(E_ALL & ~E_NOTICE);
+use Yiisoft\Composer\Config\Builder;
 
-$bootstrap = __DIR__ . '/../src/_bootstrap.php';
+define('APP_TYPE', 'tests');
 
-require_once file_exists($bootstrap) ? $bootstrap : __DIR__ . '/../vendor/autoload.php';
+error_reporting(E_ALL);
+date_default_timezone_set('UTC');
+
+$config = require Builder::path('web');
+
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../../yiisoft/yii2/Yii.php';
+
+$path = dirname(__DIR__);
+$config['id'] = 'test-app';
+$config['basePath'] = $path;
+
+\Yii::setAlias('@root', $path);
+\Yii::$app = new \yii\web\Application($config);

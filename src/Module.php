@@ -10,6 +10,7 @@
 
 namespace hiqdev\yii2\monitoring;
 
+use DateTimeImmutable;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\helpers\VarDumper;
@@ -75,7 +76,7 @@ class Module extends \yii\base\Module
             return $email;
         }
 
-        list($nick, $host) = explode('@', $email, 2);
+        [$nick, $host] = explode('@', $email, 2);
 
         return $nick . '+' . $this->getFlagText() . '@' . $host;
     }
@@ -116,15 +117,15 @@ class Module extends \yii\base\Module
         return Yii::$app->getModule('debug')->logTarget->tag;
     }
 
-    public function prepareMessageData($message)
+    public function prepareMessageData($message): array
     {
-        list($load, $level, $category, $timestamp) = $message;
+        [$load, $level, $category, $timestamp] = $message;
         $dump = $load;
         $throwable = null;
         if (!is_string($load)) {
             // exceptions may not be serializable if in the call stack somewhere is a Closure
             if ($load instanceof \Throwable || $load instanceof \Exception) {
-                $dump = (string) $load;
+                $dump = (string)$load;
                 $throwable = $load;
             } else {
                 $dump = VarDumper::export($load);
@@ -138,13 +139,13 @@ class Module extends \yii\base\Module
         }
 
         return [
-            'level'     => Logger::getLevelName($level),
-            'time'      => date('c', $timestamp),
-            'category'  => $category,
-            'traces'    => $traces,
-            'text'      => $dump,
+            'level' => Logger::getLevelName($level),
+            'time' => $this->formatTimestamp($timestamp),
+            'category' => $category,
+            'traces' => $traces,
+            'text' => $dump,
             'throwable' => $throwable,
-            'debugUrl'  => $this->getDebugUrl(),
+            'debugUrl' => $this->getDebugUrl(),
         ];
     }
 
@@ -168,5 +169,17 @@ class Module extends \yii\base\Module
         } else {
             return VarDumper::export($load);
         }
+    }
+
+    private function formatTimestamp(int|float $timestamp): string
+    {
+        if (is_int($timestamp)) {
+            return date('c', $timestamp);
+        }
+        $seconds = floor($timestamp);
+        $microseconds = round(($timestamp - $seconds) * 1000000);
+        $dt = DateTimeImmutable::createFromFormat('U.u', sprintf('%d.%06d', $seconds, $microseconds));
+
+        return $dt->format('Y-m-d\TH:i:s.uP');
     }
 }
