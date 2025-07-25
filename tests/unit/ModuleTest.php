@@ -39,7 +39,7 @@ class ModuleTest extends TestCase
         }
     }
 
-    private function createMessageWith(int|float $timestamp): array
+    private function createMessageWith($timestamp): array
     {
         $traces = [
             ['file' => '/path/to/file.php', 'line' => 123],
