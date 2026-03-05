@@ -50,7 +50,7 @@ class Component extends \yii\base\Component
         }
 
         // We do not want to report insignificant errors to New Relic
-        ini_set('newrelic.error_collector.ignore_errors', E_DEPRECATED | E_STRICT | E_NOTICE | E_WARNING);
+        ini_set('newrelic.error_collector.ignore_errors', E_DEPRECATED | E_NOTICE | E_WARNING);
         newrelic_capture_params();
         if (php_sapi_name() === 'cli') {
             newrelic_name_transaction($_SERVER['argv']);
