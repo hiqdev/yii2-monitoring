@@ -10,7 +10,6 @@
 
 namespace hiqdev\yii2\monitoring;
 
-use Sentry\SentrySdk;
 use Yii;
 use yii\web\User;
 use yii\web\UserEvent;
@@ -25,13 +24,9 @@ class Component extends \yii\base\Component
 
     private function initSentry(): void
     {
-        if (!class_exists(SentrySdk::class)) {
+        if (!class_exists(\Sentry\SentrySdk::class)) {
             return;
         }
-        if (!empty(SentrySdk::getCurrentHub()->getClient())) {
-            return;
-        }
-
         $params = Yii::$app->params;
         if (empty($params['sentry.dsn']) || empty($params['sentry.enabled'])) {
             return;
@@ -39,7 +34,7 @@ class Component extends \yii\base\Component
 
         \Sentry\init([
             'dsn' => $params['sentry.dsn'],
-            'error_types' => E_ALL,
+            'error_types' => E_ALL & ~E_DEPRECATED,
         ]);
     }
 
