@@ -52,7 +52,10 @@ class SentryTarget extends Target
 
             $hint = new EventHint();
 
-            if (is_array($msg)) {
+            if ($msg instanceof Throwable) {
+                // ErrorHandler::logException() passes the exception object itself
+                $hint->exception = $msg;
+            } elseif (is_array($msg)) {
                 if (isset($msg['message'])) {
                     $event->setMessage($msg['message']);
                     unset($msg['message']);
