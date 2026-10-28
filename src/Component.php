@@ -41,6 +41,10 @@ class Component extends \yii\base\Component
             $options['environment'] = $params['sentry.environment'];
         }
         \Sentry\init($options);
+        // After init: it replaces the hub, so tags set on an earlier scope are lost
+        if (!empty($params['sentry.tags'])) {
+            \Sentry\configureScope(static fn (\Sentry\State\Scope $scope) => $scope->setTags($params['sentry.tags']));
+        }
     }
 
     private function initNewRelic()

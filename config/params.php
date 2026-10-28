@@ -20,4 +20,5 @@ return [
     'sentry.dsn'                    => null,
     'sentry.enabled'                => true,
     'sentry.environment'            => $_ENV['SENTRY_ENVIRONMENT'] ?? null,
+    'sentry.tags'                   => [],
 ];
