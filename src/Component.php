@@ -32,10 +32,15 @@ class Component extends \yii\base\Component
             return;
         }
 
-        \Sentry\init([
+        $options = [
             'dsn' => $params['sentry.dsn'],
             'error_types' => E_ALL & ~E_DEPRECATED,
-        ]);
+        ];
+        // Unset, the SDK falls back to the process' SENTRY_ENVIRONMENT, then to "production"
+        if (!empty($params['sentry.environment'])) {
+            $options['environment'] = $params['sentry.environment'];
+        }
+        \Sentry\init($options);
     }
 
     private function initNewRelic()
