@@ -8,8 +8,6 @@
  * @copyright Copyright (c) 2017, HiQDev (http://hiqdev.com/)
  */
 
-$env = defined('YII_ENV') ? YII_ENV : 'prod';
-
 return [
     'adminEmail'                    => null,
 
@@ -21,5 +19,5 @@ return [
 
     'sentry.dsn'                    => null,
     'sentry.enabled'                => true,
-    'sentry.environment'            => $env,
+    'sentry.environment'            => $_ENV['SENTRY_ENVIRONMENT'] ?? null,
 ];

@@ -47,6 +47,7 @@ Available configuration parameters:
 - `monitoring.email.from`
 - `monitoring.email.to`
 - `sentry.dsn`
+- `sentry.environment` - defaults to `SENTRY_ENVIRONMENT`
 
 [composer-config-plugin]:   https://github.com/hiqdev/composer-config-plugin
 [src/config/hisite.php]:    src/config/hisite.php
