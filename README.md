@@ -4,9 +4,6 @@
 
 [![Latest Stable Version](https://poser.pugx.org/hiqdev/yii2-monitoring/v/stable)](https://packagist.org/packages/hiqdev/yii2-monitoring)
 [![Total Downloads](https://poser.pugx.org/hiqdev/yii2-monitoring/downloads)](https://packagist.org/packages/hiqdev/yii2-monitoring)
-[![Build Status](https://img.shields.io/travis/hiqdev/yii2-monitoring.svg)](https://travis-ci.org/hiqdev/yii2-monitoring)
-[![Scrutinizer Code Coverage](https://img.shields.io/scrutinizer/coverage/g/hiqdev/yii2-monitoring.svg)](https://scrutinizer-ci.com/g/hiqdev/yii2-monitoring/)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/hiqdev/yii2-monitoring.svg)](https://scrutinizer-ci.com/g/hiqdev/yii2-monitoring/)
 [![Dependency Status](https://www.versioneye.com/php/hiqdev:yii2-monitoring/dev-master/badge.svg)](https://www.versioneye.com/php/hiqdev:yii2-monitoring/dev-master)
 
 Provides:
